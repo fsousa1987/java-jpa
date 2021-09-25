@@ -2,6 +2,7 @@ package com.francisco.loja.testes;
 
 import com.francisco.loja.com.francisco.loja.dao.ProdutoDao;
 import com.francisco.loja.com.francisco.loja.util.JpaUtil;
+import com.francisco.loja.modelo.Categoria;
 import com.francisco.loja.modelo.Produto;
 
 import java.math.BigDecimal;
@@ -9,10 +10,8 @@ import java.math.BigDecimal;
 public class CadastroDeProduto {
 
     public static void main(String[] args) {
-        Produto celular = new Produto();
-        celular.setNome("Xiaomi Redmi");
-        celular.setDescricao("Muito legal");
-        celular.setPreco(new BigDecimal("800"));
+        var celular = new Produto(
+                "Xiaomi Redmi", "Muito legal", new BigDecimal("800"), Categoria.CELULARES);
 
         var em = JpaUtil.getEntityManager();
         var dao = new ProdutoDao(em);
