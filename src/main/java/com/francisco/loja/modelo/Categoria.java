@@ -1,8 +1,30 @@
 package com.francisco.loja.modelo;
 
-public enum Categoria {
+import javax.persistence.*;
 
-    CELULARES,
-    INFORMATICA,
-    LIVROS
+@SuppressWarnings("JpaDataSourceORMInspection")
+@Entity
+@Table(name = "categorias")
+public class Categoria {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
+
+    public Categoria() {
+
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }
