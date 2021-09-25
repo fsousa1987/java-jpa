@@ -1,8 +1,9 @@
 package com.francisco.loja.testes;
 
+import com.francisco.loja.com.francisco.loja.dao.ProdutoDao;
+import com.francisco.loja.com.francisco.loja.util.JpaUtil;
 import com.francisco.loja.modelo.Produto;
 
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
 
 public class CadastroDeProduto {
@@ -13,11 +14,11 @@ public class CadastroDeProduto {
         celular.setDescricao("Muito legal");
         celular.setPreco(new BigDecimal("800"));
 
-        var factory = Persistence.createEntityManagerFactory("loja");
-        var em = factory.createEntityManager();
+        var em = JpaUtil.getEntityManager();
+        var dao = new ProdutoDao(em);
 
         em.getTransaction().begin();
-        em.persist(celular);
+        dao.cadastrar(celular);
         em.getTransaction().commit();
         em.close();
     }
