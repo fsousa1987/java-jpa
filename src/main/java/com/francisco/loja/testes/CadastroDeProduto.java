@@ -20,6 +20,9 @@ public class CadastroDeProduto {
 
         var produtos = produtoDao.buscarPorNomeDaCategoria("Celulares");
         produtos.forEach(produto -> System.out.println(produto.getNome()));
+
+        BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Xiaomi Redmi");
+        System.out.println("Preço do produto: " + precoDoProduto);
     }
 
     private static void cadastrarProduto() {
