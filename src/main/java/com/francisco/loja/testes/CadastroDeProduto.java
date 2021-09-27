@@ -18,7 +18,7 @@ public class CadastroDeProduto {
         var p = produtoDao.buscarPorId(1L);
         System.out.println(p.getPreco());
 
-        var produtos = produtoDao.buscarTodos();
+        var produtos = produtoDao.buscarPorNomeDaCategoria("Celulares");
         produtos.forEach(produto -> System.out.println(produto.getNome()));
     }
 
