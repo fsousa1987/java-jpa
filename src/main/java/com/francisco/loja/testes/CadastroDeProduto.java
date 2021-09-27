@@ -11,6 +11,18 @@ import java.math.BigDecimal;
 public class CadastroDeProduto {
 
     public static void main(String[] args) {
+        cadastrarProduto();
+        var em = JpaUtil.getEntityManager();
+        var produtoDao = new ProdutoDao(em);
+
+        var p = produtoDao.buscarPorId(1L);
+        System.out.println(p.getPreco());
+
+        var produtos = produtoDao.buscarTodos();
+        produtos.forEach(produto -> System.out.println(produto.getNome()));
+    }
+
+    private static void cadastrarProduto() {
         var celulares = new Categoria("Celulares");
         var celular = new Produto(
                 "Xiaomi Redmi", "Muito legal", new BigDecimal("800"), celulares);
